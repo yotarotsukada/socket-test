@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import cors from 'cors';
+import cors, { CorsOptions } from 'cors';
 import express, { Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
@@ -10,14 +10,15 @@ const httpServer = createServer(app);
 const CLIENT_URL = process.env.DEV
   ? 'http://localhost:5173'
   : 'https://sss-games.vercel.app';
-const corsOption = {
+const corsOptions: CorsOptions = {
   origin: CLIENT_URL,
+  methods: ['GET', 'POST'],
   credentials: true,
 };
 
-app.use(cors(corsOption));
+app.use(cors(corsOptions));
 
-const io = new Server(httpServer, { cors: corsOption });
+const io = new Server(httpServer, { cors: corsOptions });
 io.on('connection', (socket: Socket) => {
   console.log(`socket client connected at ${new Date()}`);
   socket.on('message', (message) => {
