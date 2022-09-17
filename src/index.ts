@@ -4,6 +4,7 @@ import express, { Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 
+console.log('start server --------');
 const app = express();
 const httpServer = createServer(app);
 
@@ -11,7 +12,7 @@ const CLIENT_URL = process.env.DEV
   ? 'http://localhost:5173'
   : 'https://sss-games.vercel.app';
 const corsOption: CorsOptions = {
-  origin: CLIENT_URL,
+  origin: true,
   credentials: true,
 };
 
