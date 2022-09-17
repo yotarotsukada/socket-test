@@ -4,7 +4,7 @@ import express, { Request, Response } from 'express';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 
-console.log('start server --------');
+console.log(`start server ${process.pid} --------`);
 const app = express();
 const httpServer = createServer(app);
 
