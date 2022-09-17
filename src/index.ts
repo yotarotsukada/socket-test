@@ -12,6 +12,7 @@ const CLIENT_URL = process.env.DEV
   : 'https://sss-games.vercel.app';
 const corsOption = {
   origin: CLIENT_URL,
+  credentials: true,
 };
 
 app.use(cors(corsOption));
