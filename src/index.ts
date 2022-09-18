@@ -11,8 +11,10 @@ const httpServer = createServer(app);
 const CLIENT_URL = process.env.DEV
   ? 'http://localhost:5173'
   : 'https://sss-games.vercel.app';
+console.log(CLIENT_URL, process.env.DEV);
+
 const corsOption: CorsOptions = {
-  origin: true,
+  origin: CLIENT_URL,
   credentials: true,
 };
 
